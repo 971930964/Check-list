@@ -30,7 +30,8 @@
     $number=$_POST['combustivel'];
     $number=$_POST['gnv'];
     $obs=$_POST['obs'];
-
+    $assinatura=$_POST['assinatura'];
+    $senha=$_POST['senha'];
 
 
 
@@ -44,32 +45,36 @@
     $viatura.='<b>VIATURA:</b> '.$viatura.'<br>';
     $date.='<b>DATA:</b> '.$date.'<br><br>';
 
-    $luzes.='<b>Luzes do painel de instrumentos:</b> '.$radio.'<br>';
-    $seta_diant.='<b>Lampadas de seta dianteira:</b> '.$radio.'<br>';
-    $seta_tras.='<b>Lampadas de seta traseira:</b> '.$radio.'<br>';
-    $freio.='<b>Lampadas de freio:</b> '.$radio.'<br>';
-    $re.='<b>Lampadas de re:</b> '.$radio.'<br>';
-    $lant_farol.='<b>Lanternas e farois:</b> '.$radio.'<br>';
-    $buzina.='<b>Buzina:</b> '.$radio.'<br>';
-    $cinto.='<b>Cinto de seguranca fixacao e travamento:</b> '.$radio.'<br>';
-    $pneus.='<b>Calibragem dos pneus e estepe:</b> '.$radio.'<br>';
-    $ch_triang.='<b>Chave de roda e triangulo:</b> '.$radio.'<br>';
-    $cameras.='<b>Sistema de cameras:</b> '.$radio.'<br><br>';
+    $mensagem.='<b>Luzes do painel de instrumentos:</b> '.$radio.'<br>';
+    $mensagem.='<b>Lampadas de seta dianteira:</b> '.$radio.'<br>';
+    $mensagem.='<b>Lampadas de seta traseira:</b> '.$radio.'<br>';
+    $mensagem.='<b>Lampadas de freio:</b> '.$radio.'<br>';
+    $mensagem.='<b>Lampadas de re:</b> '.$radio.'<br>';
+    $mensagem.='<b>Lanternas e farois:</b> '.$radio.'<br>';
+    $mensagem.='<b>Buzina:</b> '.$radio.'<br>';
+    $mensagem.='<b>Cinto de seguranca fixacao e travamento:</b> '.$radio.'<br>';
+    $mensagem.='<b>Calibragem dos pneus e estepe:</b> '.$radio.'<br>';
+    $mensagem.='<b>Chave de roda e triangulo:</b> '.$radio.'<br>';
+    $mensagem.='<b>Sistema de cameras:</b> '.$radio.'<br><br>';
 
-    $habilit.='<b>Habilitacao:</b> '.$radio.'<br>';
-    $doc_veic.='<b>Documento veiculo:</b> '.$radio.'<br>';
-    $uniforme.='<b>Uniforme completo:</b> '.$radio.'<br>';
-    $cracha.='<b>Cracha de identificacao:</b> '.$radio.'<br><br>';
+    $mensagem.='<b>Habilitacao:</b> '.$radio.'<br>';
+    $mensagem.='<b>Documento veiculo:</b> '.$radio.'<br>';
+    $mensagem.='<b>Uniforme completo:</b> '.$radio.'<br>';
+    $mensagem.='<b>Cracha de identificacao:</b> '.$radio.'<br><br>';
 
     $mensagem= '<b>EQUIPAMENTOS</b><br>';
-    $tablet.='<b>Tablet e cabo:</b> '.$radio.'<br>';
-    $pda.='<b>PDA e cabo:</b> '.$radio.'<br>';
-    $cartao_comb.='<b>Cartao combustivel:</b> '.$radio.'<br>';
-    $sup_pda.='<b>Suporte PDA:</b> '.$radio.'<br>';
-    $sup_tab.='<b>Suporte tablet:</b> '.$radio.'<br>';
-    $protetor.='<b>Protetor salivar:</b> '.$radio.'<br>';
-    $carreg_veic.='<b>Carregador veicular:</b> '.$radio.'<br>';
+    $mensagem.='<b>Tablet e cabo:</b> '.$radio.'<br>';
+    $mensagem.='<b>PDA e cabo:</b> '.$radio.'<br>';
+    $mensagem.='<b>Cartao combustivel:</b> '.$radio.'<br>';
+    $mensagem.='<b>Suporte PDA:</b> '.$radio.'<br>';
+    $mensagem.='<b>Suporte tablet:</b> '.$radio.'<br>';
+    $mensagem.='<b>Protetor salivar:</b> '.$radio.'<br>';
+    $mensagem.='<b>Carregador veicular:</b> '.$radio.'<br>';
 
+    $mensagem.='<b>OBSERVACOES:</b> '.$obs.'<br>';
+
+    $mensagem.='<b>ASSINATURA:</b> '.$assinatura.'<br>';
+    $mensagem.='<b>SENHA:</b> '.$senha.'<br>';
 
 
 
@@ -82,19 +87,19 @@
 
 $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail->isSMTP(); // Não modifique
-    $mail->Host       = 'docs.google.com';  // SEU HOST (HOSPEDAGEM)
+    $mail->Host       = 'smtp.gmail.com';  // SEU HOST (HOSPEDAGEM)
     $mail->SMTPAuth   = true;                        // Manter em true
-    $mail->Username   = 'checklistgeneral@gmail.com';   //SEU USUÁRIO DE EMAIL
-    $mail->Password   = 'general1234#';                   //SUA SENHA DO EMAIL SMTP password
-    $mail->SMTPSecure = 'ssl';    //TLS OU SSL-VERIFICAR COM A HOSPEDAGEM
+    $mail->Username   = 'cesargatto@gmail.com';   //SEU USUÁRIO DE EMAIL
+    $mail->Password   = 'magrelo85';                   //SUA SENHA DO EMAIL SMTP password
+    $mail->SMTPSecure = 'tls';    //TLS OU SSL-VERIFICAR COM A HOSPEDAGEM
     $mail->Port       = 587;     //TCP PORT, VERIFICAR COM A HOSPEDAGEM
     $mail->CharSet = 'UTF-8';    //DEFINE O CHARSET UTILIZADO
     
     //Recipients
-    $mail->setFrom('checklistgeneral@gmail.com', 'Site');  //DEVE SER O MESMO EMAIL DO USERNAME
+    $mail->setFrom('cesargatto@gmail.com', 'Site');  //DEVE SER O MESMO EMAIL DO USERNAME
     $mail->addAddress('checklistgeneral@gmail.com');     // QUAL EMAIL RECEBERÁ A MENSAGEM!
     // $mail->addAddress('ellen@example.com');    // VOCÊ pode incluir quantos receptores quiser
-    $mail->addReplyTo($email, $nome);  //AQUI SERA O EMAIL PARA O QUAL SERA RESPONDIDO                  
+    // $mail->addReplyTo($email, $nome);  //AQUI SERA O EMAIL PARA O QUAL SERA RESPONDIDO                  
     // $mail->addCC('cc@example.com'); //ADICIONANDO CC
     // $mail->addBCC('bcc@example.com'); //ADICIONANDO BCC
 
